@@ -6,10 +6,13 @@ i.e my wallet my checkWin() function is not working any help or input would be a
 ## Screen Shots
 
 ### video demo
-![slots4](./slots4.mp4)
+https://github.com/murd001/NeonSlots3D/assets/117830435/2c6ace10-8043-4181-8797-ec24f920de41
 
 ### image1
 ![slots2](./slots2.png)
 
 ### image2
 ![slots1](./slots1.png)
+
+
+
