@@ -5,6 +5,9 @@ i.e my wallet my checkWin() function is not working any help or input would be a
 
 ## Screen Shots
 
+### video demo
+![slots4](./slots4.mp4)
+
 ### image1
 ![slots2](./slots2.png)
 
