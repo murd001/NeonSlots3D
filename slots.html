@@ -1,0 +1,343 @@
+<html><head><title>Neon Slots 3D - The Ultimate Virtual Casino Experience</title>
+<style>
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.casino-floor {
+  perspective: 1000px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.slot-machine {
+  width: 300px;
+  height: 400px;
+  background: linear-gradient(45deg, #333, #666);
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(255,0,255,0.5),
+              0 0 100px rgba(0,255,255,0.5),
+              0 0 150px rgba(255,255,0,0.5);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateY(0); }
+  50% { transform: translateY(-20px) rotateY(5deg); }
+}
+.screen {
+  width: 80%;
+  height: 150px;
+  background: #000;
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.reel {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 33.33%;
+  height: 300%;
+  top: 0;
+  transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.reel:nth-child(1) { left: 0; }
+.reel:nth-child(2) { left: 33.33%; }
+.reel:nth-child(3) { left: 66.66%; }
+.symbol {
+  width: 100%;
+  height: 33.33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.lever {
+  width: 30px;
+  height: 150px;
+  background: linear-gradient(90deg, #ff0000, #ff6600);
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.lever:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(255,102,0,0.8);
+}
+.neon-text {
+  font-size: 72px;
+  text-align: center;
+  text-transform: uppercase;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+@keyframes neon {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #ff00de,
+      0 0 35px #ff00de,
+      0 0 40px #ff00de,
+      0 0 50px #ff00de,
+      0 0 75px #ff00de;
+  }
+  to {
+    text-shadow:
+      0 0 2.5px #fff,
+      0 0 5px #fff,
+      0 0 7.5px #fff,
+      0 0 10px #ff00de,
+      0 0 17.5px #ff00de,
+      0 0 20px #ff00de,
+      0 0 25px #ff00de,
+      0 0 37.5px #ff00de;
+  }
+}
+.play-button {
+  padding: 15px 30px;
+  font-size: 24px;
+  background: linear-gradient(45deg, #ff00de, #00ffff);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  width: 300px;
+}
+.play-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0,255,255,0.8);
+}
+.wallet {
+  font-size: 24px;
+  margin-top: 90px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.wallet-icon {
+  font-size: 30px;
+  margin-right: 10px;
+}
+.bet-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 64px;
+}
+.bet-button {
+  font-size: 24px;
+  padding: 5px 15px;
+  background: linear-gradient(45deg, #00ffff, #ff00de);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.bet-button:hover {
+  transform: scale(1.1);
+}
+#bet-amount {
+  font-size: 24px;
+  margin: 0 15px;
+  color: #00ffff;
+}
+.win-message {
+  font-size: 36px;
+  color: #ffff00;
+  text-shadow: 0 0 10px #ffff00;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+</style>
+</head>
+<body>
+<div class="casino-floor">
+  <h1 class="neon-text">Neon Slots 3D</h1>
+  <div class="slot-machine">
+    <div class="screen">
+      <div class="reel">
+        <div class="symbol">🍒</div>
+        <div class="symbol">🍋</div>
+        <div class="symbol">🍇</div>
+      </div>
+      <div class="reel">
+        <div class="symbol">💎</div>
+        <div class="symbol">🔔</div>
+        <div class="symbol">🍊</div>
+      </div>
+      <div class="reel">
+        <div class="symbol">7️⃣</div>
+        <div class="symbol">🍉</div>
+        <div class="symbol">🍎</div>
+      </div>
+    </div>
+    <div class="lever"></div>
+  </div>
+  <div class="wallet">
+    <span class="wallet-icon">💰</span>
+    <span id="wallet-amount">1000</span> Credits
+  </div>
+  <div class="bet-controls">
+    <button class="bet-button" id="decrease-bet">-</button>
+    <span id="bet-amount">10</span>
+    <button class="bet-button" id="increase-bet">+</button>
+  </div>
+  <button class="play-button">SPIN NOW</button>
+  <div class="win-message" id="win-message"></div>
+</div>
+
+<script>
+let walletAmount = 1000;
+let betAmount = 10;
+const symbols = ['🍒', '🍋', '🍇', '💎', '🔔', '🍊', '7️⃣', '🍉', '🍎'];
+const payouts = {
+  '🍒': 2, '🍋': 3, '🍇': 4, '💎': 10, '🔔': 5,
+  '🍊': 3, '7️⃣': 20, '🍉': 4, '🍎': 3
+};
+
+function updateWallet(amount) {
+  walletAmount += amount;
+  console.log(`Wallet updated by ${amount}. New balance: ${walletAmount}`);
+  const walletElement = document.getElementById('wallet-amount');
+  if (walletElement) {
+    walletElement.textContent = walletAmount;
+  } else {
+    console.error('Wallet element not found!');
+  }
+}
+
+function updateBet(amount) {
+  betAmount = Math.max(1, Math.min(100, betAmount + amount));
+  const betElement = document.getElementById('bet-amount');
+  if (betElement) {
+    betElement.textContent = betAmount;
+  } else {
+    console.error('Bet element not found!');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const decreaseBtn = document.getElementById('decrease-bet');
+  const increaseBtn = document.getElementById('increase-bet');
+  if (decreaseBtn) decreaseBtn.addEventListener('click', () => updateBet(-1));
+  if (increaseBtn) increaseBtn.addEventListener('click', () => updateBet(1));
+  
+  const playButton = document.querySelector('.play-button');
+  if (playButton) playButton.addEventListener('click', spinReels);
+  
+  const lever = document.querySelector('.lever');
+  if (lever) {
+    lever.addEventListener('click', function() {
+      this.style.transform = 'translateY(-40%) rotate(-20deg)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-50%) rotate(0deg)';
+      }, 300);
+      spinReels();
+    });
+  }
+  
+  updateWallet(0); // Initialize wallet display
+});
+
+function spinReels() {
+  console.log('Spin initiated. Current wallet:', walletAmount, 'Bet amount:', betAmount);
+  if (walletAmount < betAmount) {
+    alert('Insufficient credits!');
+    return;
+  }
+  
+  updateWallet(-betAmount);
+  
+  const reels = document.querySelectorAll('.reel');
+  const results = [];
+  
+  reels.forEach((reel, index) => {
+    const symbolElements = reel.querySelectorAll('.symbol');
+    const randomIndex = Math.floor(Math.random() * symbolElements.length);
+    const randomSymbol = symbolElements[randomIndex].textContent;
+    results.push(randomSymbol);
+    
+    console.log(`Reel ${index + 1} symbol:`, randomSymbol, `(${randomSymbol.codePointAt(0).toString(16)})`);
+    
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateY(0)';
+    reel.offsetHeight; // Force reflow
+    reel.style.transition = 'transform 3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    reel.style.transform = `translateY(-${randomIndex * 33.33}%)`;
+  });
+  
+  console.log('Spin results:', results);
+  
+  setTimeout(() => checkWin(results), 3000);
+}
+
+function checkWin(results) {
+  console.log('Checking win. Results:', results);
+  
+  let winAmount = 0;
+  
+  if (results[0] === results[1] && results[1] === results[2]) {
+    winAmount = betAmount * payouts[results[0]];
+    console.log(`Full match: ${results[0]} - Payout: ${payouts[results[0]]}x`);
+  } else if (results[0] === results[1] || results[1] === results[2] || results[0] === results[2]) {
+    let matchedSymbol;
+    if (results[0] === results[1]) matchedSymbol = results[0];
+    else if (results[1] === results[2]) matchedSymbol = results[1];
+    else matchedSymbol = results[0];
+    
+    winAmount = Math.floor(betAmount * payouts[matchedSymbol] / 2);
+    console.log(`Partial match: ${matchedSymbol} - Payout: ${payouts[matchedSymbol] / 2}x`);
+  }
+  
+  if (winAmount > 0) {
+    console.log(`Win! Amount: ${winAmount}`);
+    updateWallet(winAmount);
+    showWinMessage(winAmount);
+  } else {
+    console.log('No win this time');
+    showWinMessage(0);
+  }
+}
+
+function showWinMessage(amount) {
+  const winMessage = document.getElementById('win-message');
+  if (!winMessage) {
+    console.error('Win message element not found!');
+    return;
+  }
+  
+  if (amount > 0) {
+    winMessage.textContent = `You won ${amount} credits!`;
+  } else {
+    winMessage.textContent = 'Try again!';
+  }
+  winMessage.style.opacity = '1';
+  
+  setTimeout(() => {
+    winMessage.style.opacity = '0';
+  }, 2000);
+}
+</script>
+</body></html>
